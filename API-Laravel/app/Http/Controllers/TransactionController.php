@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Mahasiswa;
+use App\Models\Transaction;
+use Illuminate\Http\Response;
 
-class MahasiswaController extends Controller
+class TransactionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,14 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        return view('data_mahasiswa');
+        $transaction = Transaction::orderBy('time','DESC')->get();
+
+        $response = [
+            'message' => 'List data Transaksi urut waktu berdasar kolom time',
+            'data' => $transaction
+        ];
+
+        return response()->json($response, Response::HTTP_OK);
     }
 
     /**
@@ -24,7 +32,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('tambah_data_mahasiswa');
+        //
     }
 
     /**
@@ -35,7 +43,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //
     }
 
     /**

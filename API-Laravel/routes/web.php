@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +14,5 @@ use App\Http\Controllers\MahasiswaController;
 */
 
 Route::get('/', function () {
-    return view('home', [
-        "title" => "Home"
-    ]);
+    return view('welcome');
 });
-
-Route::get('/data_mahasiswa', [MahasiswaController::class, 'index']);
-Route::get('/tambah_data_mahasiswa', [MahasiswaController::class, 'create']);
-Route::post('/simpan_mahasiswa', [MahasiswaController::class, 'store']);
-
-//Route::get('/data_mahasiswa','MahasiswaController@index')->name('data_mahasiswa');
